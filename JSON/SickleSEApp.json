@@ -13,12 +13,12 @@
   "executionType": "CLI",
   "parallelism": "SERIAL",
   "templatePath": "wrapper.sh",
-  "testPath": "test.sh", 
+  "testPath": "test.sh",
   "ontology": [ "http://edamontology.org/operation_3192",
   "http://edamontology.org/operation_0369"],
   "tags": [ "CyverseUK" ],
   "inputs": [
-    {"id": "fast",
+    {"id": "fastq",
     "value": {
       "required": true,
       "default": ""
