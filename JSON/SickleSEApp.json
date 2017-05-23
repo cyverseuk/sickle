@@ -1,0 +1,112 @@
+{
+  "name": "sickle_se_1.33",
+  "label": "Sickle SE",
+  "shortDescription": "Windowed Adaptive Trimming for fastq files using quality",
+  "longDescription": "Sickle is a tool that uses sliding windows along with quality and length thresholds to determine when quality is sufficiently low to trim the 3'-end of reads and also determines when the quality is sufficiently high enough to trim the 5'-end of reads. It will also discard reads based upon the length threshold.",
+  "helpURI": "https://github.com/najoshi/sickle",
+  "datePublished": "",
+  "author":"Alice Minotto",
+  "version": "0.0.0",
+  "deploymentSystem": "cyverseUK-Storage2",
+  "deploymentPath": "/mnt/data/apps/sickle_se",
+  "executionSystem": "cyverseUK-Batch2",
+  "executionType": "CLI",
+  "parallelism": "SERIAL",
+  "templatePath": "wrapper.sh",
+  "testPath": "test.sh", 
+  "ontology": [ "http://edamontology.org/operation_3192",
+  "http://edamontology.org/operation_0369"],
+  "tags": [ "CyverseUK" ],
+  "inputs": [
+    {"id": "fast",
+    "value": {
+      "required": true,
+      "default": ""
+    },
+    "details": { "label": "Input FASTQ file",
+      "showArgument": false
+    },
+    "semantics": {
+      "maxCardinality": 1
+    }}
+    ],
+
+
+  "parameters": [
+    {"id": "qual-type",
+    "value": {
+      "type": "enumeration",
+      "visible": true,
+      "enumValues": [
+        {"solexa": "solexa, CASAVA < 1.3"},
+        {"illumina": "illumina, CASAVA 1.3 to 1.7"},
+        {"sanger": "sanger, CASAVA >= 1.8"}
+      ],
+      "required": true
+    },
+    "details": {
+      "label" : "type of quality values",
+      "showArgument": true,
+      "argument": "--qual-type "
+      }},
+      {"id": "qual-threshold",
+      "value": {
+        "type": "number",
+        "visible": true,
+        "validator": "^[0-9]*$",
+        "default": 20
+      },
+      "details": {
+        "label" : "Threshold for trimming based on average quality in a window.",
+        "description": "Default is 20.",
+        "showArgument": true,
+        "argument": "--qual-threshold "
+        }},
+        {"id": "length-threshold",
+        "value": {
+          "type": "number",
+          "visible": true,
+          "validator": "^[0-9]*$",
+          "default": 20
+        },
+        "details": {
+          "label" : "Threshold to keep a read based on length after trimming.",
+          "description": "Default is 20.",
+          "showArgument": true,
+          "argument": "-length-threshold "
+          }},
+        {"id": "no-fiveprime",
+        "value": {
+          "type": "flag",
+          "visible": true
+        },
+        "details": {
+          "label" : "Don't do 5' trimming.",
+          "showArgument": true,
+          "argument": "--no-fiveprime "
+          }
+        },
+        {"id": "trunc-n",
+        "value": {
+          "type": "flag",
+          "visible": true
+        },
+        "details": {
+          "label" : "Truncate sequences at position of first N.",
+          "showArgument": true,
+          "argument": "--trunc-n "
+          }
+        },
+        {"id": "gzip-output",
+        "value": {
+          "type": "flag",
+          "visible": true
+        },
+        "details": {
+          "label" : "Output gzipped files.",
+          "showArgument": true,
+          "argument": "--gzip-output "
+          }
+        }
+]
+}
