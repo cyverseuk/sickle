@@ -1,0 +1,13 @@
+{
+  "name" : "sickle",
+  "appId" : "sickle_pe_1.33-0.0.0",
+  "archive" : false,
+  "inputs": {
+    "pair1" :  "agave://cyverseuk-storage2/rosysnake/data_test/test_r1.fq",
+    "pair2": "agave://cyverseuk-storage2/rosysnake/data_test/test_r2.fq"
+  },
+  "parameters" : {
+    "qual-type": "sanger",
+    "gzip-output": true
+  }
+}
